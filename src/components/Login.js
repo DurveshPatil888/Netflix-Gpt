@@ -14,7 +14,7 @@ const Login = () => {
       <div>
         <img src={background} alt="background" className="absolute z-auto" />
       </div>
-      <form className="absolute text-white bg-black w-3/12 p-12 my-40  mx-auto left-0 right-0 h-auto rounded-lg bg-opacity-80">
+      <form className="absolute text-white bg-black w-3/12 p-12 my-44  mx-auto left-0 right-0 h-auto rounded-lg bg-opacity-80">
         <h1 className="font-bold text-2xl">
           {IsSignIn ? 'Sign In' : 'Sign Up'}
         </h1>

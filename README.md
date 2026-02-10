@@ -4,6 +4,7 @@
 - Configure Tailwind
 - Header
 - Login Form
+- Sign up Form
 
 # Features
 
