@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Header from './Header';
-import { background } from '../assets/images';
+import { background } from '../assets/constants';
 import { CheckValidData } from '../utils/validate';
 import {
   createUserWithEmailAndPassword,
@@ -8,13 +8,12 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+
 const Login = () => {
   const [IsSignIn, setSignIn] = useState(true);
   const [errorMsg, seterrorMsg] = useState();
-  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
   const fullname = useRef(null);
@@ -60,8 +59,6 @@ const Login = () => {
                   photoURL,
                 })
               );
-
-              navigate('/browse');
             })
             .catch((error) => {
               seterrorMsg(error.message);
@@ -84,7 +81,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate('/browse');
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -94,7 +90,7 @@ const Login = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <Header />
       <div>
         <img
