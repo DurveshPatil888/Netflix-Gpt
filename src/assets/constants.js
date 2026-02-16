@@ -7,10 +7,20 @@ export const Logo =
 export const userIcon =
   'https://i.pinimg.com/474x/5b/50/e7/5b50e75d07c726d36f397f6359098f58.jpg';
 
-  export const API_OPTIONS={
+export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMjA2YTFkOTNmODNiZWM0ZjE0NTQ4MzRiZGU4NWFhYyIsIm5iZiI6MTc3MDc4MzcyNC40NDcsInN1YiI6IjY5OGMwM2VjOTcwYThiOTVhYmE2MTRlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xwZWVkt1_xFpb-s8PYXN4N2uyaxjcYPok6tXjcrT5Hw'
-  }
+    Authorization:
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMjA2YTFkOTNmODNiZWM0ZjE0NTQ4MzRiZGU4NWFhYyIsIm5iZiI6MTc3MDc4MzcyNC40NDcsInN1YiI6IjY5OGMwM2VjOTcwYThiOTVhYmE2MTRlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xwZWVkt1_xFpb-s8PYXN4N2uyaxjcYPok6tXjcrT5Hw',
+  },
 };
+
+export const IMG_CDN_URL = 'https://image.tmdb.org/t/p/w500/';
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: 'en', name: 'English' },
+  { identifier: 'marathi', name: 'Marathi' },
+  { identifier: 'hindi', name: 'Hindi' },
+  { identifier: 'german', name: 'German' },
+];
