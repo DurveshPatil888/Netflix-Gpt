@@ -6,7 +6,11 @@ import { background } from '../assets/constants';
 const GptPage = () => {
   return (
     <div>
-      <img className="absolute -z-10" src={background} />
+      <img
+        className="fixed top-0 left-0 -z-10 h-screen w-screen object-cover"
+        src={background}
+        alt="background"
+      />
       <GptSearchBar />
       <GptMovieSuggestion />
     </div>
