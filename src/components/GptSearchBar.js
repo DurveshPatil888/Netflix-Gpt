@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react';
 import lang from '../utils/lang';
 import { useDispatch, useSelector } from 'react-redux';
 import { API_OPTIONS } from '../assets/constants';
-import { wait } from '@testing-library/user-event/dist/utils';
 import { addGptMovieResult } from '../utils/GptSlice';
+import GptMovieSuggestion from './GptMovieSuggestion';
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
 
@@ -39,8 +39,17 @@ const GptSearchBar = () => {
           messages: [
             {
               role: 'system',
-              content:
-                'Return EXACTLY 5 movie names, comma separated. Do NOT add anything else. If the user input is related to movies (genre, country, type, etc), suggest movies. If not related to movies, reply ONLY: I only suggest movies.',
+              content: `
+You are a movie recommendation system.
+
+Always return EXACTLY 14 movie names separated by commas.
+Do NOT include numbering or explanations.
+
+If the user asks anything related to movies, genres, actors, countries, or film industries, suggest movies.
+
+Only if the request is completely unrelated to movies (e.g., weather, math, coding), reply exactly:
+I only suggest movies.
+`,
             },
             {
               role: 'user',
@@ -59,13 +68,17 @@ const GptSearchBar = () => {
         return;
       }
 
-      const GptMovies = result.split(',').map((m) => m.trim());
+      const GptMovies = result
+        .split(',')
+        .map((m) => m.trim())
+        .slice(0, 14);
       const moviesNames = GptMovies.join(', ');
       console.log(moviesNames);
 
       const data1 = GptMovies.map((movie) => searchMovieTMDB(movie));
       const tmdbResults = await Promise.all(data1);
       console.log(tmdbResults);
+
       dispatch(
         addGptMovieResult({
           movieNames: moviesNames,
@@ -78,9 +91,8 @@ const GptSearchBar = () => {
 
     setLoading(false);
   };
-
   return (
-    <div className="pt-[10%] flex justify-center ">
+    <div className="pt-[9%] flex flex-col items-center">
       <form
         className="w-1/2 bg-black grid grid-cols-12"
         onSubmit={(e) => {
@@ -95,12 +107,14 @@ const GptSearchBar = () => {
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button
+          disabled={loading}
           type="submit"
           className="col-span-3 m-4 py-2 px-4 rounded-lg bg-red-800 text-white "
         >
           {lang[langKey].search}
         </button>
       </form>
+      <GptMovieSuggestion loading={loading} />
     </div>
   );
 };
