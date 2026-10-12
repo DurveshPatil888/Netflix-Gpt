@@ -19,6 +19,7 @@ const GptSearchBar = () => {
       API_OPTIONS
     );
     const json = await data.json();
+
     return json.results;
   };
 
@@ -35,7 +36,7 @@ const GptSearchBar = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'openai/gpt-4o-mini',
+          model: 'openrouter/free',
           messages: [
             {
               role: 'system',
@@ -43,7 +44,7 @@ const GptSearchBar = () => {
 You are a movie recommendation system.
 
 Always return EXACTLY 14 movie names separated by commas.
-Do NOT include numbering or explanations.
+Do NOT include numbering or explanations. and if the user add any same name of movie then disply only that movie.
 
 If the user asks anything related to movies, genres, actors, countries, or film industries, suggest movies.
 

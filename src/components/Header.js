@@ -53,16 +53,22 @@ const Header = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [dispatch, navigate]);
   return (
     <div
-      className="fixed top-0 left-0 w-full h-28
-     z-[100] flex justify-between px-32 py-2
+      className="fixed top-0 left-0 w-full h-24 md:h-28
+     z-[100] flex justify-between px-4 md:px-32 py-2
     bg-gradient-to-b from-black via-black/70 to-transparent items-center "
     >
-      <img src={Logo} className="h-20" alt="logo" />
+      <img
+        href="http://localhost:3000/browse"
+        src={Logo}
+        className="h-12 md:h-20"
+        alt="logo"
+      />
+
       {user && (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3 flex-wrap">
           {showGptsearch && (
             <select
               className=" bg-gray-900 text-white rounded-lg px-4 h-10"
